@@ -15,6 +15,7 @@ import {
 
 import { Menu } from "lucide-react";
 import '../menu/Navbar.css'
+import { Link } from "react-router-dom";
 
 function Navbar() {
     return (
@@ -31,7 +32,7 @@ function Navbar() {
                     <NavigationMenuList className="flex gap-6">
                         <NavigationMenuItem>
                             <NavigationMenuLink href="#">
-                                Courses
+                                <Link to='/'>Course</Link>
                             </NavigationMenuLink>
                         </NavigationMenuItem>
 
