@@ -1,3 +1,4 @@
+import './Navbar.css'
 
 function Footer() {
     const year = new Date().getFullYear()
@@ -22,10 +23,9 @@ function Footer() {
                         </h3>
 
                         <ul className="space-y-3 text-gray-600">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Courses</a></li>
-                            <li><a href="#">Pricing</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="/">Courses</a></li>
+                            <li><a href="/plan">Plan</a></li>
+                            <li><a href="/contact">Contact</a></li>
                         </ul>
                     </div>
 
@@ -36,9 +36,9 @@ function Footer() {
 
                         <ul className="space-y-3 text-gray-600">
                             <li>Web Development</li>
-                            <li>React JS</li>
+                            <li>Python Full Stack</li>
                             <li>MERN Stack</li>
-                            <li>UI/UX Design</li>
+                            <li>Kotlin Application</li>
                         </ul>
                     </div>
 
