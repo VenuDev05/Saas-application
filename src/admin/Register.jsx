@@ -10,9 +10,11 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
 
+    const link = "https://saas-data-fhyp.onrender.com"
+
     try {
       const response = await fetch(
-        "http://localhost:5002/register",
+        `${link}/register`,
         {
           method: "POST",
           headers: {

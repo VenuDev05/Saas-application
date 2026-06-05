@@ -12,8 +12,10 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
+    const link = "https://saas-data-fhyp.onrender.com"
+
     try {
-      const response = await fetch("http://localhost:5002/login", {
+      const response = await fetch(`${link}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
