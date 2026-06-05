@@ -18,14 +18,37 @@ import { Menu } from "lucide-react";
 import "../menu/Navbar.css";
 import { Link } from "react-router-dom";
 
+import { useEffect, useState } from "react";
+
 function Navbar() {
+  const [username, setUsername] = useState(
+    sessionStorage.getItem("username")
+  );
+
+  const [role, setRole] = useState(
+    sessionStorage.getItem("role")
+  );
+
+  useEffect(() => {
+    const updateUser = () => {
+      setUsername(sessionStorage.getItem("username"));
+      setRole(sessionStorage.getItem("role"));
+    };
+
+    window.addEventListener("storage", updateUser);
+
+    return () => {
+      window.removeEventListener("storage", updateUser);
+    };
+  }, []);
+
   return (
     <nav className="flex items-center justify-between px-6 py-4 border-b">
       <h1 className="text-2xl font-bold">
         Edu<span className="title">Hub</span>
       </h1>
 
-      {/* Desktop Menu */}
+      
       <div className="hidden sm:block">
         <NavigationMenu>
           <NavigationMenuList className="flex gap-6">
@@ -50,9 +73,19 @@ function Navbar() {
         </NavigationMenu>
       </div>
 
-      {/* Desktop Login */}
+    
       <div className="hidden sm:block">
-        <Button variant="ghost">Login</Button>
+        <a href="/login">
+        <Button variant="ghost"
+        > {username ? (
+        <div>
+          <span>
+            {role === "admin" ? "👑 " : ""} {username}
+          </span>
+        </div>
+      ) : (
+        <Link to="/">Login</Link>
+      )}</Button></a>
       </div>
 
       {/* Mobile Menu */}
@@ -98,9 +131,11 @@ function Navbar() {
               </div>
 
               <div className="mt-auto pt-6 border-t">
+                <a href="/login">
                 <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
                   Login
                 </Button>
+                </a>
               </div>
             </div>
           </SheetContent>
@@ -110,4 +145,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Navbar
